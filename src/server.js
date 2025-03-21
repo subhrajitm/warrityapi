@@ -13,7 +13,7 @@ const swaggerConfig = require('./config/swagger');
 
 // Load environment variables based on NODE_ENV first
 const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: path.resolve(process.cwd(), '../', envFile) });
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 // Create logs directory if it doesn't exist
 const logsDir = path.join(process.cwd(), 'logs');
