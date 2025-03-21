@@ -11,7 +11,7 @@ applications:
             - npm run build
             - npm run postbuild
       artifacts:
-        baseDirectory: .
+        baseDirectory: dist
         files:
           - '**/*'
       cache:
@@ -26,6 +26,10 @@ applications:
           commands:
             - echo "No frontend build required"
       artifacts:
-        baseDirectory: .
+        baseDirectory: dist
         files:
-          - '**/*' 
+          - '**/*'
+    customRules:
+      - pattern: /api/*
+        target: /api/index.html
+        status: 200 
