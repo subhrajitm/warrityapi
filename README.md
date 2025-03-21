@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Warrity API
 
 The backend API for the Warrity Warranty Management System.
@@ -283,3 +284,6 @@ The API includes several performance optimizations:
 - Proper error handling
 - Static file caching
 - PM2 clustering for multi-core utilization
+=======
+# warrityapi
+>>>>>>> c3290fa990e0ead55815db8240d19247587d5b36
