@@ -38,12 +38,16 @@ applications:
         headers:
           - key: 'X-Custom-Header'
             value: 'api-proxy'
+          - key: 'NODE_ENV'
+            value: 'production'
       - pattern: /api-docs/*
         target: /index.js
         status: 200
         headers:
           - key: 'X-Custom-Header'
             value: 'api-proxy'
+          - key: 'NODE_ENV'
+            value: 'production'
       - pattern: /*
         target: /index.html
         status: 200 
