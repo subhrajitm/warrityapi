@@ -33,7 +33,13 @@ applications:
           - '**/*'
     customRules:
       - pattern: /api/*
-        target: /index.js
+        target: /src/server.js
+        status: 200
+        headers:
+          - key: 'X-Custom-Header'
+            value: 'api-proxy'
+      - pattern: /api-docs/*
+        target: /src/server.js
         status: 200
         headers:
           - key: 'X-Custom-Header'
