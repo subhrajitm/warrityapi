@@ -8,7 +8,7 @@
     "dev": "nodemon src/server.js",
     "test": "jest",
     "lint": "eslint .",
-    "build": "mkdir -p dist && cp -r src package.json package-lock.json .env.production dist/ && echo '#!/bin/bash\ncd dist && npm ci --production && node src/server.js' > dist/start.sh && chmod +x dist/start.sh",
+    "build": "mkdir -p dist && cp -r src package.json package-lock.json .env.production index.html dist/ && echo '#!/bin/bash\ncd dist && npm ci --production && node src/server.js' > dist/start.sh && chmod +x dist/start.sh",
     "postbuild": "cd dist && cp .env.production .env",
     "start:pm2": "pm2 start ecosystem.config.js --env production",
     "stop:pm2": "pm2 stop warrity-api",

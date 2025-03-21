@@ -88,7 +88,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Static files
 app.use('/uploads', express.static(path.join(process.cwd(), process.env.UPLOAD_PATH || 'uploads')));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '..'))); // Serve files from root directory
 
 // Swagger API Documentation
 app.use('/api-docs', swaggerConfig.serve, swaggerConfig.setup);
@@ -109,12 +109,9 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// Root route
+// Root route - serve index.html
 app.get('/', (req, res) => {
-  res.json({
-    message: 'Welcome to Warrity API',
-    version: '1.0.0'
-  });
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // 404 handler
