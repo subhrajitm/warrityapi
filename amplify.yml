@@ -16,4 +16,16 @@ applications:
           - '**/*'
       cache:
         paths:
-          - node_modules/**/* 
+          - node_modules/**/*
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - echo "No frontend build required"
+        build:
+          commands:
+            - echo "No frontend build required"
+      artifacts:
+        baseDirectory: .
+        files:
+          - '**/*' 
