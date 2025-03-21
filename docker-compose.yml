@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  api:
+    image: warrity-api
+    container_name: warrity-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./logs:/usr/src/app/logs
+      - ./uploads:/usr/src/app/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - MONGODB_URI=mongodb://mongodb:27017/warrity
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION=7d
+      - UPLOAD_PATH=./uploads
+      - CORS_ORIGIN=https://warrity.yourdomain.com
+      - LOG_LEVEL=error
+      - RATE_LIMIT_MAX=60
+      - RATE_LIMIT_WINDOW_MS=900000
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    networks:
+      - warrity-network
+
+  nginx:
+    container_name: warrity-nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - warrity-network
+
+networks:
+  warrity-network:
+    driver: bridge 
