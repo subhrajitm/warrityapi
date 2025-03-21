@@ -4,7 +4,7 @@
 # Usage: ./server-control.sh [start|stop|restart|status]
 
 # Configuration
-PORT=5001
+PORT=5000
 PID_FILE="./warrity-api.pid"
 LOG_FILE="./logs/server.log"
 NODE_ENV=${NODE_ENV:-"production"}

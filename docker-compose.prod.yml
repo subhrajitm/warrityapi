@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+    ports:
+      - "5001:5001"
     environment:
       - NODE_ENV=production
       - PORT=5001
@@ -18,10 +20,21 @@ services:
       - MAX_FILE_SIZE=10485760
       - LOG_LEVEL=info
     volumes:
-      - ./logs:/app/logs
-      - ./uploads:/app/uploads
+      - ./logs:/usr/src/app/logs
+      - ./uploads:/usr/src/app/uploads
+    depends_on:
+      - mongodb
     networks:
-      - app-network
+      - warrity-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - warrity-network
 
   nginx:
     image: nginx:alpine
@@ -34,8 +47,11 @@ services:
     depends_on:
       - api
     networks:
-      - app-network
+      - warrity-network
+
+volumes:
+  mongodb_data:
 
 networks:
-  app-network:
+  warrity-network:
     driver: bridge 

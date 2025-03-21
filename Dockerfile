@@ -20,7 +20,7 @@ RUN mkdir -p logs uploads
 RUN chmod -R 755 logs uploads
 
 # Expose the port the app runs on
-EXPOSE 5001
+EXPOSE 5000
 
 # Set NODE_ENV to production
 ENV NODE_ENV=production

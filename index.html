@@ -3,67 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warrity API Status</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .status {
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .healthy {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .unhealthy {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .endpoints {
-            margin-top: 30px;
-        }
-        .endpoint {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 3px;
-        }
-    </style>
+    <title>Warrity API - GraphQL Playground</title>
+    <link rel="stylesheet" href="https://unpkg.com/graphiql/graphiql.min.css" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/graphiql/graphiql.min.js"></script>
 </head>
 <body>
-    <h1>Warrity API Status</h1>
-    <div id="status" class="status">
-        Checking API status...
-    </div>
-    <div class="endpoints">
-        <h2>Available Endpoints</h2>
-        <div class="endpoint">
-            <strong>Health Check:</strong> <a href="/api/health">/api/health</a>
-        </div>
-        <div class="endpoint">
-            <strong>API Documentation:</strong> <a href="/api-docs">/api-docs</a>
-        </div>
-    </div>
-
+    <div id="graphiql" style="height: 100vh;"></div>
     <script>
-        fetch('/api/health')
-            .then(response => response.json())
-            .then(data => {
-                const statusDiv = document.getElementById('status');
-                statusDiv.textContent = `API Status: ${data.status}`;
-                statusDiv.className = `status ${data.status === 'healthy' ? 'healthy' : 'unhealthy'}`;
-            })
-            .catch(error => {
-                const statusDiv = document.getElementById('status');
-                statusDiv.textContent = 'API Status: Unavailable';
-                statusDiv.className = 'status unhealthy';
-            });
+        const root = document.getElementById('graphiql');
+        const fetcher = GraphiQL.createFetcher({
+            url: '/graphql',
+            fetchOptions: {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            },
+        });
+        ReactDOM.render(
+            React.createElement(GraphiQL, {
+                fetcher,
+                defaultQuery: `# Welcome to Warrity API GraphQL Playground
+# Try this query:
+query {
+  me {
+    id
+    email
+    firstName
+    lastName
+    role
+  }
+}`,
+            }),
+            root
+        );
     </script>
 </body>
 </html> 

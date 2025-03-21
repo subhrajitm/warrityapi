@@ -16,8 +16,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5001",
-      "description": "Development server"
+      "url": "http://localhost:5000",
+      "description": "Local development server"
     },
     {
       "url": "https://api.warrity.yourdomain.com",

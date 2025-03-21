@@ -10,7 +10,7 @@ const getServerUrl = () => {
   } else if (env === 'staging') {
     return process.env.API_URL || 'https://staging-api.warrity.com';
   } else {
-    return process.env.API_URL || `http://localhost:${process.env.PORT || 5001}`;
+    return process.env.API_URL || `http://localhost:${process.env.PORT || 5000}`;
   }
 };
 

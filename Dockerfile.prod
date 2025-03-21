@@ -31,7 +31,7 @@ RUN mkdir -p logs uploads
 ENV NODE_ENV=production
 
 # Expose port
-EXPOSE 5001
+EXPOSE 5000
 
 # Start the application
 CMD ["node", "src/server.js"] 

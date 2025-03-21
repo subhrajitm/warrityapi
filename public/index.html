@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Playground</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        window.addEventListener('load', function (event) {
+            const root = document.getElementById('root');
+            GraphQLPlayground.init(root, {
+                endpoint: '/graphql',
+                subscriptionEndpoint: '/graphql',
+                workspaceName: 'Warrity API',
+                settings: {
+                    'editor.theme': 'dark',
+                    'editor.fontSize': 14,
+                    'editor.fontFamily': '"Fira Code", monospace',
+                    'editor.reuseHeaders': true,
+                    'tracing.hideTracingResponse': true,
+                    'queryPlan.hideQueryPlanResponse': true,
+                    'editor.formatOnType': true,
+                    'editor.formatOnPaste': true,
+                    'editor.tabSize': 2,
+                    'editor.cursorShape': 'line',
+                    'editor.lineNumbers': 'on',
+                    'editor.autoCloseBrackets': true,
+                    'editor.autoCloseQuotes': true,
+                    'editor.matchBrackets': true,
+                    'editor.matchTags': true,
+                    'editor.folding': true,
+                    'editor.foldingStrategy': 'indentation',
+                    'editor.suggestSelection': 'first',
+                    'editor.wordWrap': 'on',
+                    'editor.wrapLines': true,
+                    'editor.gotoLocation': true,
+                    'editor.parameterHints.enabled': true,
+                    'editor.snippetSuggestions': 'top',
+                    'editor.quickSuggestions': {
+                        other: true,
+                        comments: true,
+                        strings: true
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/graphql-playground-react/build/static/js/middleware.js"></script>
+</body>
+</html> 

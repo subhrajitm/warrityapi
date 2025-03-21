@@ -13,7 +13,7 @@ services:
       - ./logs:/usr/src/app/logs
       - ./uploads:/usr/src/app/uploads
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=5001
       - MONGODB_URI=mongodb://mongodb:27017/warrity
       - JWT_SECRET=${JWT_SECRET}
@@ -45,6 +45,16 @@ services:
     restart: unless-stopped
     networks:
       - warrity-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
 
 networks:
   warrity-network:
