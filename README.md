@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Warrity API
 
 The backend API for the Warrity Warranty Management System.
@@ -48,6 +47,20 @@ This API provides all the necessary endpoints for the Warrity application, inclu
    ```
    npm run dev
    ```
+
+## Development Guidelines
+
+### Git Configuration
+
+The project uses Git for version control with the following configurations:
+
+- `node_modules/` directory is excluded from Git tracking (see `.gitignore`)
+- Dependencies are managed through `package.json` and `package-lock.json`
+- When cloning the repository, run `npm install` to install dependencies
+
+### Environment Variables
+
+The project uses environment variables for configuration. A `.env.example` file is provided as a template. Create your own `.env` file based on this template and update the values as needed.
 
 ## API Documentation
 
@@ -284,6 +297,3 @@ The API includes several performance optimizations:
 - Proper error handling
 - Static file caching
 - PM2 clustering for multi-core utilization
-=======
-# warrityapi
->>>>>>> c3290fa990e0ead55815db8240d19247587d5b36
