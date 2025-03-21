@@ -9,6 +9,8 @@ applications:
         build:
           commands:
             - npm run build
+        postBuild:
+          commands:
             - npm run postbuild
       artifacts:
         baseDirectory: dist
@@ -31,5 +33,8 @@ applications:
           - '**/*'
     customRules:
       - pattern: /api/*
-        target: /api/index.html
+        target: /api/index.js
+        status: 200
+      - pattern: /*
+        target: /index.html
         status: 200 
